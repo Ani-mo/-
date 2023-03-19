@@ -22,3 +22,6 @@ for filename in folder:
             print(filename + " - Размер фото подходит")
         else:
             print(filename + " - Размер фото не подходит")
+            
+# Ожидаем ввода от пользователя, чтобы предотвратить закрытие окна Python
+input("Нажмите Enter для выхода...")
