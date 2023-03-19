@@ -3,7 +3,7 @@ from PIL import Image
 import os
 
 # Указываем путь к папке с фотографиями
-path = "ПИШЕМ ПУТЬ К ПАПКЕ"
+path = r"ПИШЕМ ПУТЬ К ПАПКЕ"
 
 # Получаем список файлов в папке
 folder = os.listdir(path)
