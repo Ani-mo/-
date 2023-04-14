@@ -1,24 +1,28 @@
-import argparse
+# Импортируем необходимые библиотеки
 from PIL import Image
 import os
+import sys
 from natsort import natsorted
 
-# Создаем парсер аргументов командной строки
-parser = argparse.ArgumentParser(description='Проверка размеров изображений в заданной папке')
-parser.add_argument('path', metavar='path', type=str,
-                    help='Путь к папке с фотографиями')
+# Получаем путь к папке с фотографиями из аргумента командной строки
+if len(sys.argv) == 2:
+    path = sys.argv[1]
+else:
+    path = input("Введите путь к папке с фотографиями: ")
 
-# Получаем аргументы командной строки
-args = parser.parse_args()
+# Проверяем, существует ли указанная папка
+if not os.path.isdir(path):
+    print("Указанная папка не существует.")
+    sys.exit()
 
 # Получаем список файлов в папке и сортируем их по имени файла с использованием функции-ключа
-folder = natsorted(os.listdir(args.path))
+folder = natsorted(os.listdir(path))
 
 # Итерируемся по каждому файлу и проверяем его размеры
 for filename in folder:
     if filename.endswith(".jpg") or filename.endswith(".png"):
         # Открываем изображение
-        im = Image.open(os.path.join(args.path, filename))
+        im = Image.open(os.path.join(path, filename))
 
         # Получаем размеры изображения
         width, height = im.size
